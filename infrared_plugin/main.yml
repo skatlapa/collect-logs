@@ -1,0 +1,28 @@
+---
+# This is file and plugin.spec are required by Infrared project
+
+- name: Gather Logs
+  hosts: all:!localhost
+  gather_facts: true
+  become: yes   #review
+  become_method: sudo   #review
+  become_user: stack    #review
+  roles:
+    - collect-logs
+
+  tasks:                #check_indentation_here
+
+      - name: Collect artcl
+        #set_fact:
+        #   artcl_collect: false
+        when: install.artcl.collect
+
+      - name: Publish artcl
+        #set_fact:
+        #   artcl_publish: true
+        when: install.artcl.publish
+
+     # - name: Set undercloud update
+     #   set_fact:
+     #     undercloud_update: true
+     #   when: install.undercloud.get('update', {})             #check_this_kind
