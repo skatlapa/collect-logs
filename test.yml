@@ -1,0 +1,11 @@
+---
+# This needs to be run on already existing tripleO environment, on executing it collects logs from the triple) nodes
+
+- name: Gather Logs
+  hosts: all:!localhost
+  gather_facts: true
+  become: yes   #review
+  become_method: sudo   #review
+  become_user: stack    #review
+  roles:
+    - collect-logs
