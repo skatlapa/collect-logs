@@ -1,0 +1,8 @@
+---
+- name: Gather logs
+  hosts: all:!localhost
+  roles:
+  - { role: extras-common }
+  - { role: collect-logs, artcl_collect: 'true'}
+
+
